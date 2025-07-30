@@ -1,0 +1,137 @@
+<html>
+<head>
+<title>Main.kt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #6aab73;}
+.s4 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Main.kt</font>
+</center></td></tr></table>
+<pre><span class="s0">fun </span><span class="s1">main</span><span class="s2">() {</span>
+    <span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;=== GESTOR DE INFORMACIÓN PERSONAL EN KOTLIN ===</span><span class="s0">\n</span><span class="s3">&quot;</span><span class="s2">)</span>
+
+
+    <span class="s0">val </span><span class="s1">usuarios </span><span class="s2">= </span><span class="s1">mutableListOf</span><span class="s2">&lt;</span><span class="s1">Usuario</span><span class="s2">&gt;()</span>
+
+
+    <span class="s1">repeat</span><span class="s2">(</span><span class="s4">3</span><span class="s2">) {</span>
+        <span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;Registro de Usuario </span><span class="s0">${</span><span class="s1">it </span><span class="s2">+ </span><span class="s4">1</span><span class="s0">}</span><span class="s3">&quot;</span><span class="s2">)</span>
+        <span class="s1">print</span><span class="s2">(</span><span class="s3">&quot;Nombre completo: &quot;</span><span class="s2">)</span>
+        <span class="s0">val </span><span class="s1">nombre </span><span class="s2">= </span><span class="s1">readln</span><span class="s2">()</span>
+
+        <span class="s0">var </span><span class="s1">edad: Int</span>
+        <span class="s0">do </span><span class="s2">{</span>
+            <span class="s1">print</span><span class="s2">(</span><span class="s3">&quot;Edad: &quot;</span><span class="s2">)</span>
+            <span class="s1">edad </span><span class="s2">= </span><span class="s1">readln</span><span class="s2">().</span><span class="s1">toIntOrNull</span><span class="s2">() </span><span class="s1">?: </span><span class="s2">-</span><span class="s4">1</span>
+        <span class="s2">} </span><span class="s0">while </span><span class="s2">(</span><span class="s1">edad </span><span class="s2">&lt;= </span><span class="s4">0</span><span class="s2">)</span>
+
+        <span class="s0">var </span><span class="s1">altura: Double</span>
+        <span class="s0">do </span><span class="s2">{</span>
+            <span class="s1">print</span><span class="s2">(</span><span class="s3">&quot;Altura (en metros): &quot;</span><span class="s2">)</span>
+            <span class="s1">altura </span><span class="s2">= </span><span class="s1">readln</span><span class="s2">().</span><span class="s1">toDoubleOrNull</span><span class="s2">() </span><span class="s1">?: </span><span class="s2">-</span><span class="s4">1.0</span>
+        <span class="s2">} </span><span class="s0">while </span><span class="s2">(</span><span class="s1">altura </span><span class="s2">&lt;= </span><span class="s4">0</span><span class="s2">)</span>
+
+        <span class="s0">var </span><span class="s1">peso: Double</span>
+        <span class="s0">do </span><span class="s2">{</span>
+            <span class="s1">print</span><span class="s2">(</span><span class="s3">&quot;Peso (en kilogramos): &quot;</span><span class="s2">)</span>
+            <span class="s1">peso </span><span class="s2">= </span><span class="s1">readln</span><span class="s2">().</span><span class="s1">toDoubleOrNull</span><span class="s2">() </span><span class="s1">?: </span><span class="s2">-</span><span class="s4">1.0</span>
+        <span class="s2">} </span><span class="s0">while </span><span class="s2">(</span><span class="s1">peso </span><span class="s2">&lt;= </span><span class="s4">0</span><span class="s2">)</span>
+
+        <span class="s0">var </span><span class="s1">email: String</span>
+        <span class="s0">do </span><span class="s2">{</span>
+            <span class="s1">print</span><span class="s2">(</span><span class="s3">&quot;Email: &quot;</span><span class="s2">)</span>
+            <span class="s1">email </span><span class="s2">= </span><span class="s1">readln</span><span class="s2">()</span>
+        <span class="s2">} </span><span class="s0">while </span><span class="s2">(!</span><span class="s1">validarEmail</span><span class="s2">(</span><span class="s1">email</span><span class="s2">))</span>
+
+        <span class="s1">print</span><span class="s2">(</span><span class="s3">&quot;Ciudad de residencia: &quot;</span><span class="s2">)</span>
+        <span class="s0">val </span><span class="s1">ciudad </span><span class="s2">= </span><span class="s1">readln</span><span class="s2">()</span>
+
+
+        <span class="s0">val </span><span class="s1">usuario </span><span class="s2">= </span><span class="s1">Usuario</span><span class="s2">(</span><span class="s1">nombre</span><span class="s2">, </span><span class="s1">edad</span><span class="s2">, </span><span class="s1">altura</span><span class="s2">, </span><span class="s1">peso</span><span class="s2">, </span><span class="s1">email</span><span class="s2">, </span><span class="s1">ciudad</span><span class="s2">)</span>
+        <span class="s1">usuarios</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">usuario</span><span class="s2">)</span>
+        <span class="s1">println</span><span class="s2">()</span>
+    <span class="s2">}</span>
+
+    <span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;=== INFORMACIÓN DE USUARIOS REGISTRADOS ===</span><span class="s0">\n</span><span class="s3">&quot;</span><span class="s2">)</span>
+
+
+    <span class="s0">for </span><span class="s2">((</span><span class="s1">i</span><span class="s2">, </span><span class="s1">usuario</span><span class="s2">) </span><span class="s0">in </span><span class="s1">usuarios</span><span class="s2">.</span><span class="s1">withIndex</span><span class="s2">()) {</span>
+        <span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;USUARIO </span><span class="s0">${</span><span class="s1">i </span><span class="s2">+ </span><span class="s4">1</span><span class="s0">}</span><span class="s3">&quot;</span><span class="s2">)</span>
+        <span class="s1">println</span><span class="s2">(</span><span class="s1">usuario</span><span class="s2">.</span><span class="s1">resumen</span><span class="s2">())</span>
+        <span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;=========================================</span><span class="s0">\n</span><span class="s3">&quot;</span><span class="s2">)</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+
+
+<span class="s0">fun </span><span class="s1">validarEmail</span><span class="s2">(</span><span class="s1">email: String</span><span class="s2">)</span><span class="s1">: Boolean </span><span class="s2">{</span>
+    <span class="s0">return </span><span class="s1">email</span><span class="s2">.</span><span class="s1">contains</span><span class="s2">(</span><span class="s3">&quot;@&quot;</span><span class="s2">) &amp;&amp; </span><span class="s1">email</span><span class="s2">.</span><span class="s1">contains</span><span class="s2">(</span><span class="s3">&quot;.&quot;</span><span class="s2">)</span>
+<span class="s2">}</span>
+
+
+<span class="s1">data </span><span class="s0">class </span><span class="s1">Usuario</span><span class="s2">(</span>
+    <span class="s0">val </span><span class="s1">nombre: String</span><span class="s2">,</span>
+    <span class="s0">val </span><span class="s1">edad: Int</span><span class="s2">,</span>
+    <span class="s0">val </span><span class="s1">altura: Double</span><span class="s2">,</span>
+    <span class="s0">val </span><span class="s1">peso: Double</span><span class="s2">,</span>
+    <span class="s0">val </span><span class="s1">email: String</span><span class="s2">,</span>
+    <span class="s0">val </span><span class="s1">ciudad: String</span>
+<span class="s2">) {</span>
+
+    <span class="s0">fun </span><span class="s1">calcularIMC</span><span class="s2">()</span><span class="s1">: Double </span><span class="s2">{</span>
+        <span class="s0">return </span><span class="s1">peso </span><span class="s2">/ (</span><span class="s1">altura </span><span class="s2">* </span><span class="s1">altura</span><span class="s2">)</span>
+    <span class="s2">}</span>
+
+
+    <span class="s0">fun </span><span class="s1">esMayorDeEdad</span><span class="s2">()</span><span class="s1">: Boolean </span><span class="s2">{</span>
+        <span class="s0">return </span><span class="s1">edad </span><span class="s2">&gt;= </span><span class="s4">18</span>
+    <span class="s2">}</span>
+
+
+    <span class="s0">fun </span><span class="s1">dominioEmail</span><span class="s2">()</span><span class="s1">: String </span><span class="s2">{</span>
+        <span class="s0">return </span><span class="s1">email</span><span class="s2">.</span><span class="s1">substringAfter</span><span class="s2">(</span><span class="s3">&quot;@&quot;</span><span class="s2">)</span>
+    <span class="s2">}</span>
+
+    <span class="s0">fun </span><span class="s1">resumen</span><span class="s2">()</span><span class="s1">: String </span><span class="s2">{</span>
+        <span class="s0">val </span><span class="s1">nombreMayus </span><span class="s2">= </span><span class="s1">nombre</span><span class="s2">.</span><span class="s1">uppercase</span><span class="s2">()</span>
+        <span class="s0">val </span><span class="s1">nombreMinus </span><span class="s2">= </span><span class="s1">nombre</span><span class="s2">.</span><span class="s1">lowercase</span><span class="s2">()</span>
+        <span class="s0">val </span><span class="s1">imc </span><span class="s2">= </span><span class="s1">String</span><span class="s2">.</span><span class="s1">format</span><span class="s2">(</span><span class="s3">&quot;%.2f&quot;</span><span class="s2">, </span><span class="s1">calcularIMC</span><span class="s2">())</span>
+
+        <span class="s0">return </span><span class="s3">&quot;&quot;&quot;</span>
+            <span class="s3">Nombre (Mayúsculas): </span><span class="s0">$</span><span class="s1">nombreMayus</span>
+            <span class="s3">Nombre (Minúsculas): </span><span class="s0">$</span><span class="s1">nombreMinus</span>
+            <span class="s3">Edad: </span><span class="s0">$</span><span class="s1">edad </span><span class="s3">años (</span><span class="s0">${if </span><span class="s2">(</span><span class="s1">esMayorDeEdad</span><span class="s2">()) </span><span class="s3">&quot;Mayor de edad&quot; </span><span class="s0">else </span><span class="s3">&quot;Menor de edad&quot;</span><span class="s0">}</span><span class="s3">)</span>
+            <span class="s3">Altura: </span><span class="s0">$</span><span class="s1">altura </span><span class="s3">m</span>
+            <span class="s3">Peso: </span><span class="s0">$</span><span class="s1">peso </span><span class="s3">kg</span>
+            <span class="s3">IMC: </span><span class="s0">$</span><span class="s1">imc</span>
+            <span class="s3">Email: </span><span class="s0">$</span><span class="s1">email</span>
+            <span class="s3">Dominio del email: </span><span class="s0">${</span><span class="s1">dominioEmail</span><span class="s2">()</span><span class="s0">}</span>
+            <span class="s3">Ciudad: </span><span class="s0">$</span><span class="s1">ciudad</span>
+        <span class="s3">&quot;&quot;&quot;</span><span class="s2">.</span><span class="s1">trimIndent</span><span class="s2">()</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</body>
+</html>
